@@ -1,6 +1,11 @@
 import type { Log } from './logger';
 import type { MarbleDiagram } from './marble';
 
+// Concepts
+import * as conceptsColdObservable from './operators/concepts/coldObservable';
+import * as conceptsHotObservable from './operators/concepts/hotObservable';
+import * as conceptsColdVsHot from './operators/concepts/coldVsHot';
+
 // Creation
 import * as creationOf from './operators/creation/of';
 import * as creationFrom from './operators/creation/from';
@@ -60,6 +65,7 @@ export interface OperatorEntry extends OperatorMeta {
 }
 
 const categories = [
+  'Concepts',
   'Creation',
   'Transformation',
   'Filtering',
@@ -79,6 +85,10 @@ function entry(mod: OperatorModule): OperatorEntry {
 }
 
 const operators: OperatorEntry[] = [
+  // Concepts
+  entry(conceptsColdObservable),
+  entry(conceptsHotObservable),
+  entry(conceptsColdVsHot),
   // Creation
   entry(creationOf),
   entry(creationFrom),
